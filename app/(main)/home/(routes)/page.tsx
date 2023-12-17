@@ -22,11 +22,12 @@ export default function Home() {
                     </Link>
                 </div>
                 <hr className='w-[500px] my-2' />
-                <div className='grid grid-cols-6 grid-rows-2 gap-y-2 gap-x-2'>
-                    <article className='col-span-6 w-full h-[500px] bg-blue-400'></article>
-                    <article className='w-full col-span-2 row-span-1 h-[200px] bg-red-600'></article>
-                    <article className='w-full col-span-2 row-span-1 h-[200px] bg-red-600'></article>
-                    <article className='w-full col-span-2 row-span-1 h-[200px] bg-red-600'></article>
+                <div className='grid grid-cols-4 grid-rows-4 gap-y-2 gap-x-2'>
+                    <article className='col-span-3 row-span-4 w-full h-[500px] bg-blue-500'></article>
+                    <article className='bg-red-500'></article>
+                    <article className='bg-red-500'></article>
+                    <article className='bg-red-500'></article>
+                    <article className='bg-red-500'></article>
                 </div>
             </section>
         </main>

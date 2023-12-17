@@ -6,6 +6,13 @@ import Link from "next/link";
 import { Badge } from "./ui/badge";
 import { ModeToggle } from "./mode-toggle";
 import QuoteGenerator from "./quote-generator";
+import { PersonIcon } from "@radix-ui/react-icons";
+import {
+    Tooltip,
+    TooltipContent,
+    TooltipProvider,
+    TooltipTrigger,
+} from "./ui/tooltip";
 
 const font = Permanent_Marker({ subsets: ["latin"], weight: ["400"] });
 
@@ -18,6 +25,20 @@ const Navbar = () => {
                 </h5>
                 <div className='flex space-x-2 items-center dark:bg-neutral-800 bg-zinc-300/60 px-2 py-0.5 rounded-full'>
                     <ModeToggle />
+                    <TooltipProvider>
+                        <Tooltip>
+                            <TooltipTrigger asChild>
+                                <Link href={"/profile"}>
+                                    <PersonIcon className='h-5 w-5' />
+                                </Link>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                                <div className='px-2'>
+                                    <p>Profile</p>
+                                </div>
+                            </TooltipContent>
+                        </Tooltip>
+                    </TooltipProvider>
                     <UserButton />
                 </div>
             </div>

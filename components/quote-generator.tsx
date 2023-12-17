@@ -3,7 +3,7 @@ import React from "react";
 import useSWR from "swr";
 import Loading from "./loading";
 
-const fetcher = (...args) => fetch(...args).then((res) => res.json());
+const fetcher = (...args: any[]) => fetch(...args).then((res) => res.json());
 const QuoteGenerator = () => {
     const { data, error, isLoading } = useSWR(
         "https://dummyjson.com/quotes/random",

@@ -8,11 +8,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Label } from "./ui/label";
 import { Switch } from "./ui/switch";
 import { useToast } from "./ui/use-toast";
+import axios from "axios";
 
 const formSchema = z.object({
     subscribed: z.boolean().optional(),
 });
-const ProfileForm = ({ subscribed }: { subscribed: boolean | undefined }) => {
+const ProfileForm = ({ profile }: { profile: Profile | null }) => {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -23,14 +24,28 @@ const ProfileForm = ({ subscribed }: { subscribed: boolean | undefined }) => {
     const { toast } = useToast();
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
-        if (values.subscribed) {
-            toast({
-                description: "Turned on Newsletter",
+        alert(values.subscribed?.valueOf());
+        try {
+            const response = await axios.patch("/api/setup", {
+                id: profile?.id,
+                subscribed: values.subscribed?.valueOf(),
+                agreed: profile?.agreed.valueOf(),
             });
-        } else {
-            toast({
-                description: "Turned off Newsletter",
-            });
+
+            if (response) {
+                toast({
+                    title: "Newsletter Settings",
+                    description: `Changed newsletter settings to ${values.subscribed?.valueOf()}.`,
+                });
+            }
+        } catch (error: any) {
+            if (error) {
+                toast({
+                    variant: "destructive",
+                    title: "Uh oh! Something went wrong.",
+                    description: error.message,
+                });
+            }
         }
     };
 

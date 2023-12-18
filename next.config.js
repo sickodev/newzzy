@@ -10,6 +10,10 @@ const nextConfig = {
                 protocol: "https",
                 hostname: "st3.depositphotos.com",
             },
+            {
+                protocol: "https",
+                hostname: "live-production.wcms.abc-cdn.net.au",
+            },
         ],
     },
 };

@@ -91,9 +91,7 @@ const Profile = async () => {
                                         disabled
                                     />
                                 </div>
-                                <ProfileForm
-                                    subscribed={profile?.subscribed.valueOf()}
-                                />
+                                <ProfileForm profile={profile} />
                             </CardContent>
                         </Card>
                     </CardContent>

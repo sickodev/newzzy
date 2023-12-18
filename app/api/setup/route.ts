@@ -4,7 +4,6 @@ import { NextResponse } from "next/server";
 export async function PATCH(request: Request) {
     try {
         const json = await request.json();
-        console.log(json);
         const response = await db.profile.update({
             where: {
                 userId: json.id,
